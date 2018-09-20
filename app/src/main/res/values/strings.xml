@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">庆山物流</string>
+    <string name="if_password_visible">&#xe601;</string>
+    <string name="if_password_invisible">&#xe600;</string>
+    <string name="if_personal">&#xe62f;</string>
+    <string name="if_message">&#xe617;</string>
+</resources>
