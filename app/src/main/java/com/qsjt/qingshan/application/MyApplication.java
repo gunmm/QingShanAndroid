@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 
 import com.baidu.mapapi.SDKInitializer;
-import com.qsjt.qingshan.config.Config;
+import com.qsjt.qingshan.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;

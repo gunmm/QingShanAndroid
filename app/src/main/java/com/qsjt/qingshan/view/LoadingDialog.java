@@ -3,6 +3,7 @@ package com.qsjt.qingshan.view;
 import android.app.ProgressDialog;
 
 import com.qsjt.qingshan.application.MyApplication;
+import com.qsjt.qingshan.utils.LogUtils;
 
 
 public class LoadingDialog {

@@ -1,7 +1,6 @@
 package com.qsjt.qingshan.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -31,6 +30,9 @@ public abstract class SpinnerAdapter<T> extends BaseAdapter {
 
     @Override
     public T getItem(int position) {
+        if (mData.isEmpty()) {
+            return null;
+        }
         return mData.get(position);
     }
 

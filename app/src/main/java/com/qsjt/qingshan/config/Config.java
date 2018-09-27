@@ -3,7 +3,6 @@ package com.qsjt.qingshan.config;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 
 import com.qsjt.qingshan.application.MyApplication;
 
@@ -39,7 +38,8 @@ public class Config {
      * @return IP
      */
     public String getIp() {
-        return mPreferences.getString("ip", "39.107.113.157");
+//        return mPreferences.getString("ip", "39.107.113.157");
+        return mPreferences.getString("ip", "192.168.0.130");
     }
 
     public void setIp(String ip) {
@@ -51,7 +51,7 @@ public class Config {
      * @return port
      */
     public String getPort() {
-        return mPreferences.getString("port", "8080");
+        return mPreferences.getString("port", "8080/QingShansProject");
     }
 
     public void setPort(String port) {

@@ -28,6 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.v4.widget.NestedScrollView
+            android:id="@+id/scrollView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="#F1F1F1"
@@ -56,6 +57,42 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/ll_subscribe_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/divider"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="12dp">
+
+                            <com.qsjt.qingshan.view.TypeFaceTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="&#xe644;"
+                                android:textColor="@color/red"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="预约时间" />
+
+                            <TextView
+                                android:id="@+id/tv_subscribe_time"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:background="@null"
+                                android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+                                android:gravity="end|center_vertical"
+                                android:singleLine="true"
+                                android:text="@={vm.subscribeTime}"
+                                android:textColor="@color/black" />
+
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -117,7 +154,8 @@
                                 android:background="@null"
                                 android:gravity="end"
                                 android:hint="发货人"
-                                android:inputType="text" />
+                                android:inputType="text"
+                                android:text="@={vm.shipper}" />
 
                         </LinearLayout>
 
@@ -150,7 +188,8 @@
                                 android:background="@null"
                                 android:gravity="end"
                                 android:hint="发货电话"
-                                android:inputType="phone" />
+                                android:inputType="phone"
+                                android:text="@={vm.shipperPhone}" />
 
                         </LinearLayout>
 
@@ -183,7 +222,8 @@
                                 android:background="@null"
                                 android:gravity="end"
                                 android:hint="收货人"
-                                android:inputType="text" />
+                                android:inputType="text"
+                                android:text="@={vm.consignee}" />
 
                         </LinearLayout>
 
@@ -216,7 +256,8 @@
                                 android:background="@null"
                                 android:gravity="end"
                                 android:hint="收货电话"
-                                android:inputType="phone" />
+                                android:inputType="phone"
+                                android:text="@={vm.receivePhone}" />
 
                         </LinearLayout>
 
@@ -249,7 +290,8 @@
                                 android:gravity="end"
                                 android:hint="备注"
                                 android:inputType="textMultiLine"
-                                android:maxHeight="80dp" />
+                                android:maxHeight="80dp"
+                                android:text="@={vm.note}" />
 
                         </LinearLayout>
 

@@ -14,7 +14,6 @@ import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
-import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.utils.DistanceUtil;
@@ -105,7 +104,7 @@ public class MapUtils {
      * @param resId    marker图标资源ID
      * @return MarkerOptions
      */
-    public static MarkerOptions initOptions(Context mContext, String mStr, int resId, int iconWidth, int iconHeight) {
+    public static MarkerOptions initMarkerOptions(Context mContext, String mStr, int resId, int iconWidth, int iconHeight) {
 
         View view = View.inflate(mContext, R.layout.map_item_marker, null);
 
@@ -122,24 +121,22 @@ public class MapUtils {
         params.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, iconWidth, mContext.getResources().getDisplayMetrics());
         params.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, iconHeight, mContext.getResources().getDisplayMetrics());
 
-        imgMarker.setLayoutParams(params);
-
         BitmapDescriptor bitmapDescriptor = BitmapDescriptorFactory
                 .fromView(view);
         return new MarkerOptions().icon(bitmapDescriptor).zIndex(9)
                 .draggable(false);
     }
 
-    public static MarkerOptions initOptions(Context mContext, int resId, int iconWidth, int iconHeight) {
-        return initOptions(mContext, null, resId, iconWidth, iconHeight);
+    public static MarkerOptions initMarkerOptions(Context mContext, int resId, int iconWidth, int iconHeight) {
+        return initMarkerOptions(mContext, null, resId, iconWidth, iconHeight);
     }
 
-    public static MarkerOptions initOptions(Context mContext, String mStr, int resId, int iconSize) {
-        return initOptions(mContext, mStr, resId, iconSize, iconSize);
+    public static MarkerOptions initMarkerOptions(Context mContext, String mStr, int resId, int iconSize) {
+        return initMarkerOptions(mContext, mStr, resId, iconSize, iconSize);
     }
 
-    public static MarkerOptions initOptions(Context mContext, int resId, int iconSize) {
-        return initOptions(mContext, null, resId, iconSize);
+    public static MarkerOptions initMarkerOptions(Context mContext, int resId, int iconSize) {
+        return initMarkerOptions(mContext, null, resId, iconSize);
     }
 
 

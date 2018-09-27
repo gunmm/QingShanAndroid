@@ -109,7 +109,8 @@ class SearchAddressActivity : BaseActivity() {
             onBackPressed()
         }
 
-        viewModel.poiSearch().observe(this, Observer {
+        viewModel.poiSearch()
+        viewModel.poiData.observe(this, Observer {
             mBinding.refreshLayout.finishLoadMore()
             if (it == null) {
                 mBinding.refreshLayout.finishLoadMoreWithNoMoreData()

@@ -92,7 +92,9 @@
         </activity>
         <activity android:name=".ui.activity.RetrievePasswordActivity" />
         <activity android:name=".ui.activity.SearchAddressActivity" />
-        <activity android:name=".ui.activity.PlaceAnOrderActivity"></activity>
+        <activity android:name=".ui.activity.PlaceAnOrderActivity" />
+        <activity android:name=".ui.activity.WaitingForOrderActivity" />
+        <activity android:name=".ui.activity.ClientOrderActivity"></activity>
     </application>
 
 </manifest>

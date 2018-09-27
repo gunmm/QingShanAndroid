@@ -70,6 +70,10 @@ class MainActivity : BaseActivity() {
         uiSettings.isOverlookingGesturesEnabled = false
         mMap.isMyLocationEnabled = true
 
+        mMap.setOnMapLoadedCallback {
+            mMap.setPadding(0, 0, 0, mBinding.cardView.height + Utils.dp2px(this, 8))
+        }
+
         mMap.setOnMapStatusChangeListener(object : BaiduMap.OnMapStatusChangeListener {
             override fun onMapStatusChangeStart(p0: MapStatus?) {
             }
@@ -81,8 +85,7 @@ class MainActivity : BaseActivity() {
             }
 
             override fun onMapStatusChangeFinish(p0: MapStatus?) {
-                val point = Point(mIvLocationInWindow[0], mIvLocationInWindow[2])
-                val location = mMap.projection.fromScreenLocation(point)
+                val location = p0!!.target
                 viewModel.shipLocation = location
                 viewModel.reverseGeoCode(location)
             }
@@ -159,6 +162,11 @@ class MainActivity : BaseActivity() {
         mBinding.gpPersonal.setOnClickListener {
 
         }
+
+        mBinding.llOrder.setOnClickListener {
+            val intent = Intent(this, ClientOrderActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private inner class MyLocationListener : BDAbstractLocationListener() {
@@ -171,15 +179,7 @@ class MainActivity : BaseActivity() {
                 BDLocation.TypeNetWorkLocation -> {
                     viewModel.city = bdLocation.city
                     val location = LatLng(bdLocation.latitude, bdLocation.longitude)
-                    mMap.setMapStatus(MapStatusUpdateFactory.newLatLngZoom(location, 18f))
-
-                    Handler().postDelayed({
-                        val point = Point()
-                        point.x = mIvLocationInWindow[0]
-                        point.y = mIvLocationInWindow[1]
-                        val location = mMap.projection.fromScreenLocation(point)
-                        MapUtils.animateMapStatus(mMap, location)
-                    }, 100)
+                    MapUtils.animateMapStatus(mMap, location, 18f)
 
                     val locationData = MyLocationData.Builder()
                             .accuracy(bdLocation.radius)
@@ -209,13 +209,6 @@ class MainActivity : BaseActivity() {
             when (requestCode) {
                 101 -> {
                     mMap.setMapStatus(MapStatusUpdateFactory.newLatLngZoom(location, 18f))
-                    Handler().postDelayed({
-                        val point = Point()
-                        point.x = mIvLocationInWindow[0]
-                        point.y = mIvLocationInWindow[1]
-                        val location = mMap.projection.fromScreenLocation(point)
-                        mMap.setMapStatus(MapStatusUpdateFactory.newLatLng(location))
-                    }, 100)
                     viewModel.shipAddressName.set(addressName)
                     viewModel.shipAddress = address
                     viewModel.shipLocation = location
@@ -224,13 +217,15 @@ class MainActivity : BaseActivity() {
                     viewModel.receiveAddressName.set(addressName)
                     viewModel.receiveAddress = address
                     viewModel.receiveLocation = location
-                    viewModel.loadDictionaryList().observe(this, Observer {
-                        if (it != null) {
-                            val intent = Intent(this, PlaceAnOrderActivity::class.java)
-                            intent.putExtra("data", it)
-                            startActivity(intent)
-                        }
-                    })
+                    Handler().postDelayed({
+                        viewModel.loadDictionaryList().observe(this, Observer {
+                            if (it != null) {
+                                val intent = Intent(this, PlaceAnOrderActivity::class.java)
+                                intent.putExtra("data", it)
+                                startActivity(intent)
+                            }
+                        })
+                    }, 100)
                 }
             }
         }

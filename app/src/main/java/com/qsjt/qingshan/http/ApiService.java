@@ -44,4 +44,16 @@ public interface ApiService {
      */
     @POST("mobile/getDictionaryList")
     Observable<BasicResponse<List<Dictionary>>> getDictionaryList(@Body RequestBody requestBody);
+
+    /**
+     * 下单
+     */
+    @POST("mobile/addOrder")
+    Observable<BasicResponse<String>> placeAnOrder(@Body RequestBody requestBody);
+
+    /**
+     * 获取客户订单列表
+     */
+    @POST("mobile/getOrderList")
+    Observable<BasicResponse<Object>> getClientOrderList(@Body RequestBody requestBody);
 }

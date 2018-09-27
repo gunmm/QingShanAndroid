@@ -47,16 +47,17 @@ class MainActivityViewModel : ViewModel() {
                 if (p0 == null || p0.error != SearchResult.ERRORNO.NO_ERROR) {
                     return
                 }
-                shipAddressName.set(p0.poiList[0].name)
                 val poiInfo = p0.poiList[0]
-//                shipAddressName.set(poiInfo.name)
-                shipAddress = if ("北京市" == poiInfo.province ||
-                        "天津市" == poiInfo.province ||
-                        "上海市" == poiInfo.province ||
-                        "重庆市" == poiInfo.province) {
-                    poiInfo.city + poiInfo.area
+                shipAddressName.set(poiInfo.name)
+                val addressDetail = p0.addressDetail
+                city = addressDetail.city
+                shipAddress = if ("北京市" == addressDetail.province ||
+                        "天津市" == addressDetail.province ||
+                        "上海市" == addressDetail.province ||
+                        "重庆市" == addressDetail.province) {
+                    addressDetail.city + addressDetail.district
                 } else {
-                    poiInfo.province + poiInfo.city + poiInfo.area
+                    addressDetail.province + addressDetail.city + addressDetail.district
                 }
             }
         })

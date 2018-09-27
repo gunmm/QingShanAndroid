@@ -6,13 +6,12 @@ import android.text.TextUtils
 import com.baidu.mapapi.search.core.PoiInfo
 import com.baidu.mapapi.search.core.SearchResult
 import com.baidu.mapapi.search.poi.*
-import com.qsjt.qingshan.utils.LogUtils
 
 class SearchAddressActivityViewModel : ViewModel() {
 
     private val poiSearch by lazy { PoiSearch.newInstance() }
 
-    private val poiData by lazy { MutableLiveData<List<PoiInfo>>() }
+    val poiData by lazy { MutableLiveData<List<PoiInfo>>() }
 
     var addressName: String? = null
 
@@ -42,16 +41,15 @@ class SearchAddressActivityViewModel : ViewModel() {
         })
     }
 
-    fun poiSearch(): MutableLiveData<List<PoiInfo>> {
+    fun poiSearch() {
         if (TextUtils.isEmpty(city) || TextUtils.isEmpty(addressName)) {
-            return poiData
+            return
         }
         poiSearch.searchInCity(PoiCitySearchOption()
                 .city(city)
                 .keyword(addressName)
                 .pageNum(pageNum)
         )
-        return poiData
     }
 
     override fun onCleared() {
