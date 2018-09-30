@@ -166,12 +166,14 @@ class PlaceAnOrderActivity : BaseActivity() {
         val shipAddressName = data["shipAddressName"].toString()
         val shipMarker = MapUtils.initMarkerOptions(this, shipAddressName, R.drawable.ic_begin_marker, 30)
         shipMarker.position(shipLocation)
+        shipMarker.anchor(0.5f, 0.6f)
         mMap.addOverlay(shipMarker)
 
         val receiveLocation = data["receiveLocation"] as LatLng
         val receiveAddressName = data["receiveAddressName"].toString()
         val receiveMarker = MapUtils.initMarkerOptions(this, receiveAddressName, R.drawable.ic_end_marker, 30)
         receiveMarker.position(receiveLocation)
+        receiveMarker.anchor(0.5f, 0.6f)
         mMap.addOverlay(receiveMarker)
 
         MapUtils.setZoomAndPoint(mMap, shipLocation, receiveLocation)
