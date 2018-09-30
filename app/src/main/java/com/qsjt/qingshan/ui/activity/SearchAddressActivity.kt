@@ -12,6 +12,7 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.Gravity
 import android.view.View
@@ -101,7 +102,11 @@ class SearchAddressActivity : BaseActivity() {
 
     private fun initView() {
         val city = intent.getStringExtra("city")
-        viewModel.city = city
+        viewModel.city = if (TextUtils.isEmpty(city)) {
+            "北京"
+        } else {
+            city
+        }
         val addressName = intent.getStringExtra("address_name")
         viewModel.addressName = addressName
 

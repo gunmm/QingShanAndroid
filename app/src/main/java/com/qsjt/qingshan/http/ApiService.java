@@ -2,6 +2,7 @@ package com.qsjt.qingshan.http;
 
 import com.qsjt.qingshan.model.BasicResponse;
 import com.qsjt.qingshan.model.response.Dictionary;
+import com.qsjt.qingshan.model.response.Order;
 
 import java.util.List;
 
@@ -55,5 +56,5 @@ public interface ApiService {
      * 获取客户订单列表
      */
     @POST("mobile/getOrderList")
-    Observable<BasicResponse<Object>> getClientOrderList(@Body RequestBody requestBody);
+    Observable<BasicResponse<List<Order>>> getClientOrderList(@Body RequestBody requestBody);
 }
