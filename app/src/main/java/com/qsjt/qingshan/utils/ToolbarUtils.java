@@ -1,11 +1,10 @@
 package com.qsjt.qingshan.utils;
 
 import android.graphics.Typeface;
-import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.Toolbar;
-import android.util.TypedValue;
+import android.util.SparseArray;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,16 +16,28 @@ import com.qsjt.qingshan.R;
  */
 public class ToolbarUtils {
 
-    private ToolbarUtils instance;
+    private final ToolbarUtils instance;
 
-    private AppCompatActivity activity;
+    private final AppCompatActivity activity;
 
-    private View view;
+    private final View view;
+
+    private final SparseArray<View> mViews;
 
     public ToolbarUtils(final AppCompatActivity activity, View view) {
         instance = this;
         this.activity = activity;
         this.view = view;
+        this.mViews = new SparseArray<>();
+    }
+
+    public <T extends View> T getView(int viewId) {
+        View v = mViews.get(viewId);
+        if (v == null) {
+            v = view.findViewById(viewId);
+            mViews.put(viewId, v);
+        }
+        return (T) v;
     }
 
     public ToolbarUtils setDisplayHomeAsUpEnabled() {

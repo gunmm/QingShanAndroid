@@ -3,6 +3,7 @@ package com.qsjt.qingshan.http;
 import com.qsjt.qingshan.model.BasicResponse;
 import com.qsjt.qingshan.model.response.Dictionary;
 import com.qsjt.qingshan.model.response.Order;
+import com.qsjt.qingshan.model.response.Vehicle;
 
 import java.util.List;
 
@@ -57,4 +58,16 @@ public interface ApiService {
      */
     @POST("mobile/getOrderList")
     Observable<BasicResponse<List<Order>>> getClientOrderList(@Body RequestBody requestBody);
+
+    /**
+     * 获取范围内车辆列表
+     */
+    @POST("mobile/getOrderCarList")
+    Observable<BasicResponse<List<Vehicle>>> getVehicleList(@Body RequestBody requestBody);
+
+    /**
+     * 客户取消订单
+     */
+    @POST("mobile/cancelOrder")
+    Observable<BasicResponse<Object>> cancelOrder(@Body RequestBody requestBody);
 }

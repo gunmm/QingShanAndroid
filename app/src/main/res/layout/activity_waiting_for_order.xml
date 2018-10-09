@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:fitsSystemWindows="true"
     tools:context=".ui.activity.WaitingForOrderActivity">
 
     <include
@@ -22,5 +23,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/in_toolbar" />
+
+    <LinearLayout
+        android:id="@+id/ll_tbc_tip"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapView">
+
+        <ProgressBar
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:indeterminateBehavior="repeat"
+            android:indeterminateDrawable="@anim/anim_rotate_loading"
+            android:indeterminateDuration="1000"
+            android:interpolator="@android:anim/linear_interpolator" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="司机已抢单，等待司机最终确认订单" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
