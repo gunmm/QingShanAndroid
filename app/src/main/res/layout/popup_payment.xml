@@ -18,7 +18,7 @@
             android:id="@+id/tv_total_price"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/divider"
+            android:background="@drawable/divider_bottom"
             android:gravity="center"
             android:padding="8dp"
             android:text="@{`￥`+vm.price}"

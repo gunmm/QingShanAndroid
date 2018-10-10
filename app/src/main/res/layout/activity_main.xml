@@ -105,7 +105,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
-                            android:background="@drawable/divider"
+                            android:background="@drawable/divider_bottom"
                             android:hint="发货地址"
                             android:paddingBottom="12dp"
                             android:paddingTop="12dp"

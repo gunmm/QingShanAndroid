@@ -31,10 +31,15 @@ class ClientOrderActivity : BaseActivity() {
                 bd!!.vm = item
                 bd.executePendingBindings()
                 bd.root.setOnClickListener {
-                    if ("0" == item.status) {
-                        val intent = Intent(this@ClientOrderActivity, WaitingForOrderActivity::class.java)
-                        intent.putExtra("order_id", item.orderId)
-                        startActivity(intent)
+                    when (item.status) {
+                        "0", "1" -> {
+                            val intent = Intent(this@ClientOrderActivity, WaitingForOrderActivity::class.java)
+                            intent.putExtra("order", item)
+                            startActivity(intent)
+                        }
+                        else -> {
+                            
+                        }
                     }
                 }
             }

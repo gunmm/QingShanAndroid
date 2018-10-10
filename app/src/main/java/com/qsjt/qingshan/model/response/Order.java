@@ -1,6 +1,8 @@
 package com.qsjt.qingshan.model.response;
 
-public class Order {
+import java.io.Serializable;
+
+public class Order implements Serializable {
 
     /**
      * orderId : d7341ffe-501a-4047-ae10-fc8f5953383e
